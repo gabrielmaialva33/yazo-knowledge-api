@@ -5,13 +5,16 @@ lib
 .vscode
 .idea
 
-# Serverless directories
+# serverless directories
 .serverless
 
 # esbuild directories
 .esbuild
 
-# Misc
+# dynamodb directories
+.dynamodb
+
+# misc
 .DS_STORE
 .env
 tmp

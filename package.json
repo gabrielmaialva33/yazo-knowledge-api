@@ -20,6 +20,7 @@
   "license": "MIT",
   "main": "serverless.ts",
   "scripts": {
+    "dev": "sls offline",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -73,7 +74,9 @@
     "json-schema-to-ts": "^2.5.3",
     "prettier": "^2.7.1",
     "serverless": "^3.19.0",
+    "serverless-dynamodb-local": "^0.2.40",
     "serverless-esbuild": "^1.30.0",
+    "serverless-offline": "^8.8.0",
     "ts-node": "^10.8.1",
     "tsconfig-paths": "^4.0.0",
     "typescript": "^4.7.4",
