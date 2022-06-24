@@ -20,10 +20,39 @@
   "license": "MIT",
   "main": "serverless.ts",
   "scripts": {
+    "lint": "eslint . --ext=.ts",
+    "format": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
     "node": ">=14.15.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:adonis/typescriptApp",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error"
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "build"
+  ],
+  "prettier": {
+    "trailingComma": "es5",
+    "semi": false,
+    "singleQuote": true,
+    "useTabs": false,
+    "quoteProps": "consistent",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "printWidth": 100
   },
   "dependencies": {
     "@middy/core": "^3.1.0",
@@ -33,14 +62,20 @@
     "@serverless/typescript": "^3.19.0",
     "@types/aws-lambda": "^8.10.101",
     "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
     "esbuild": "^0.14.47",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-adonis": "^2.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "json-schema-to-ts": "^2.5.3",
+    "prettier": "^2.7.1",
     "serverless": "^3.19.0",
     "serverless-esbuild": "^1.30.0",
     "ts-node": "^10.8.1",
     "tsconfig-paths": "^4.0.0",
     "typescript": "^4.7.4",
     "yarn-upgrade-all": "^0.7.1"
-  },
-
+  }
 }
