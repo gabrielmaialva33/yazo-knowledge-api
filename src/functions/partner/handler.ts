@@ -4,7 +4,7 @@ import { v4 } from 'uuid'
 
 import { JSONResponse } from '@libs/api-gateway'
 import { middyfy } from '@libs/lambda'
-import { PartnerStoreDto, PartnerEditDto } from '@models/partner.dto'
+import { PartnerStoreDto, PartnerEditDto } from '../../dtos/partner.dto'
 
 import partnerService from '@services/index'
 
