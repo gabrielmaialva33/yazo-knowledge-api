@@ -1,4 +1,4 @@
-import { dynamoDBClient } from '@config/index'
+import dynamoDBClient from '@config/dynamo'
 import PartnerService from '@services/partner.service'
 
 const partnerService = new PartnerService(dynamoDBClient())
