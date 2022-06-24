@@ -1,6 +1,13 @@
 import type { AWS } from '@serverless/typescript'
 
 import hello from '@functions/hello'
+import {
+  listPartners,
+  getPartner,
+  storePartner,
+  deletePartner,
+  editPartner,
+} from '@functions/partner'
 
 const serverlessConfiguration: AWS = {
   service: 'yazo-knowledge-api',
@@ -31,14 +38,14 @@ const serverlessConfiguration: AWS = {
               'dynamodb:UpdateItem',
               'dynamodb:DeleteItem',
             ],
-            Resource: 'arn:aws:dynamodb:us-west-2:*:table/PartnerTable',
+            Resource: 'arn:aws:dynamodb:us-east-1:*:table/PartnersTable',
           },
         ],
       },
     },
   },
   // import the function via paths
-  functions: { hello },
+  functions: { hello, listPartners, getPartner, storePartner, deletePartner, editPartner },
   package: { individually: true },
   custom: {
     esbuild: {
@@ -61,19 +68,19 @@ const serverlessConfiguration: AWS = {
     },
     resources: {
       Resources: {
-        TodosTable: {
+        PartnersTable: {
           Type: 'AWS::DynamoDB::Table',
           Properties: {
-            TableName: 'PartnerTable',
+            TableName: 'partners',
             AttributeDefinitions: [
               {
-                AttributeName: 'partner_id',
+                AttributeName: 'id',
                 AttributeType: 'S',
               },
             ],
             KeySchema: [
               {
-                AttributeName: 'partner_id',
+                AttributeName: 'id',
                 KeyType: 'HASH',
               },
             ],

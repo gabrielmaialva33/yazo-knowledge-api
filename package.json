@@ -58,6 +58,7 @@
   "dependencies": {
     "@middy/core": "^3.1.0",
     "@middy/http-json-body-parser": "^3.1.0",
+    "luxon": "^2.4.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
