@@ -1,0 +1,46 @@
+{
+  "name": "yazo-knowledge-api",
+  "version": "1.0.0",
+  "description": "Serverless yazo-knowledge-api base",
+  "keywords": [
+    "typescript",
+    "base",
+    "serverless",
+    "lambda"
+  ],
+  "author": {
+    "name": "Gabriel Maia",
+    "url": "https://github.com/gabrielmaialva33"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gabrielmaialva33/yazo-knowledge-api.git"
+  },
+  "private": true,
+  "license": "MIT",
+  "main": "serverless.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "dependencies": {
+    "@middy/core": "^3.1.0",
+    "@middy/http-json-body-parser": "^3.1.0"
+  },
+  "devDependencies": {
+    "@serverless/typescript": "^3.19.0",
+    "@types/aws-lambda": "^8.10.101",
+    "@types/node": "^18.0.0",
+    "esbuild": "^0.14.47",
+    "json-schema-to-ts": "^2.5.3",
+    "serverless": "^3.19.0",
+    "serverless-esbuild": "^1.30.0",
+    "ts-node": "^10.8.1",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.7.4",
+    "yarn-upgrade-all": "^0.7.1"
+  },
+
+}
