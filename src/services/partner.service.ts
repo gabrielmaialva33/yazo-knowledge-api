@@ -1,23 +1,23 @@
 import { DocumentClient } from 'aws-sdk/clients/dynamodb'
 
-import Partner from '@models/partner'
+import PartnerModel from '@models/partner.model'
 
 export default class PartnerService {
   public table: string = 'partners'
 
   constructor(private db: DocumentClient) {}
 
-  public async list(): Promise<Array<Partner>> {
+  public async list(): Promise<Array<PartnerModel>> {
     const partners = await this.db
       .scan({
         TableName: this.table,
       })
       .promise()
 
-    return partners.Items as Array<Partner>
+    return partners.Items as Array<PartnerModel>
   }
 
-  public async get(id: string): Promise<Partner> {
+  public async get(id: string): Promise<PartnerModel> {
     const partner = await this.db
       .get({
         TableName: this.table,
@@ -28,10 +28,10 @@ export default class PartnerService {
       .promise()
     if (!partner.Item) throw new Error('partner not found or not available.')
 
-    return partner.Item as Partner
+    return partner.Item as PartnerModel
   }
 
-  public async store(partner: Partner): Promise<Partner> {
+  public async store(partner: PartnerModel): Promise<PartnerModel> {
     await this.db
       .put({
         TableName: this.table,
@@ -39,10 +39,10 @@ export default class PartnerService {
       })
       .promise()
 
-    return partner as Partner
+    return partner as PartnerModel
   }
 
-  public async edit(id: string, data: string): Promise<Partner> {
+  public async edit(id: string, data: string): Promise<PartnerModel> {
     console.log(data)
     const updated = await this.db
       .update({
@@ -59,7 +59,7 @@ export default class PartnerService {
       })
       .promise()
 
-    return updated.Attributes as Partner
+    return updated.Attributes as PartnerModel
   }
 
   public async delete(id: string): Promise<any> {

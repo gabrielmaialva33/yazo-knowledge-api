@@ -1,9 +1,11 @@
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
+import { APIGatewayProxyEvent, APIGatewayProxyResult, Handler } from 'aws-lambda'
 import { DateTime } from 'luxon'
 import { v4 } from 'uuid'
 
 import { JSONResponse } from '@libs/api-gateway'
 import { middyfy } from '@libs/lambda'
+import { PartnerStoreDto, PartnerEditDto } from '@models/partner.dto'
+
 import partnerService from '@services/index'
 
 export const listPartners = middyfy(async (): Promise<APIGatewayProxyResult> => {
@@ -13,7 +15,7 @@ export const listPartners = middyfy(async (): Promise<APIGatewayProxyResult> => 
   })
 })
 
-export const getPartner = middyfy(
+export const getPartner: Handler = middyfy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const id = event.pathParameters.id
     try {
@@ -31,19 +33,18 @@ export const getPartner = middyfy(
   }
 )
 
-export const storePartner = middyfy(
-  async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+export const storePartner: Handler = middyfy(
+  async (event: APIGatewayProxyEvent & PartnerStoreDto): Promise<APIGatewayProxyResult> => {
+    const { title, sub_title, bio } = event.body
+
     try {
       const partner = await partnerService.store({
         id: v4(),
-        // @ts-ignore
-        title: event.body.title,
-        // @ts-ignore
-        sub_title: event.body.sub_title,
-        // @ts-ignore
-        bio: event.body.bio,
-        created_at: DateTime.now().toISOString(),
-        updated_at: DateTime.now().toISOString(),
+        title,
+        sub_title,
+        bio,
+        created_at: DateTime.now().toISO(),
+        updated_at: DateTime.now().toISO(),
       })
 
       return JSONResponse({
@@ -52,14 +53,14 @@ export const storePartner = middyfy(
     } catch (error) {
       return JSONResponse({
         status: 500,
-        message: error,
+        message: error.message,
       })
     }
   }
 )
 
-export const editPartner = middyfy(
-  async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+export const editPartner: Handler = middyfy(
+  async (event: APIGatewayProxyEvent & PartnerEditDto): Promise<APIGatewayProxyResult> => {
     const id = event.pathParameters.id
     const data = event.body
     try {
@@ -77,7 +78,7 @@ export const editPartner = middyfy(
   }
 )
 
-export const deletePartner = middyfy(
+export const deletePartner: Handler = middyfy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const id = event.pathParameters.id
     try {

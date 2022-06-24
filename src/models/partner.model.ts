@@ -1,4 +1,4 @@
-export default interface Partner {
+export default interface PartnerModel {
   id: string
   title: object
   sub_title: object
