@@ -59,8 +59,10 @@
   "dependencies": {
     "@middy/core": "^3.1.0",
     "@middy/http-json-body-parser": "^3.1.0",
+    "dynamoose": "^2.8.5",
     "luxon": "^2.4.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@serverless/typescript": "^3.19.0",

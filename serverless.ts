@@ -1,13 +1,6 @@
 import type { AWS } from '@serverless/typescript'
 
-import hello from '@functions/hello'
-import {
-  listPartners,
-  getPartner,
-  storePartner,
-  deletePartner,
-  editPartner,
-} from '@functions/partner'
+import { storePartner } from '@functions/partner'
 
 const serverlessConfiguration: AWS = {
   service: 'yazo-knowledge-api',
@@ -45,7 +38,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { hello, listPartners, getPartner, storePartner, deletePartner, editPartner },
+  functions: { storePartner },
   package: { individually: true },
   custom: {
     esbuild: {
@@ -71,7 +64,7 @@ const serverlessConfiguration: AWS = {
         PartnersTable: {
           Type: 'AWS::DynamoDB::Table',
           Properties: {
-            TableName: 'partners',
+            TableName: 'PartnersTable',
             AttributeDefinitions: [
               {
                 AttributeName: 'id',

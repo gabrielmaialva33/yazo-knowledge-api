@@ -2,11 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@config/*": ["src/config/*"],
+      "@exceptions/*": ["src/exceptions/*"],
       "@functions/*": ["src/functions/*"],
       "@libs/*": ["src/libs/*"],
       "@models/*": ["src/models/*"],
       "@services/*": ["src/services/*"],
-      "@config/*": ["src/config/*"]
+      "@utils/*": ["src/utils/*"],
+      "@validators/*": ["src/validators/*"],
     }
   }
 }
